@@ -1,0 +1,14 @@
+.PokeCard {
+    background-color: rgb(216, 187, 187);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin: 1em;
+    width: 40%;
+}
+
+.desc{
+    padding: 2em;
+    text-align: left;
+}
