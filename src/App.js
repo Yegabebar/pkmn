@@ -1,16 +1,23 @@
 import './App.css';
 import { PokeCard } from './components/PokeCard/PokeCard.js';
+import { AddForm } from './components/AddForm/AddForm.js';
 import { pokemons } from './data/pokemons.js';
 
 function App() {
   // Si pas d'objet pokemons en stockage, sauvegarder les pokemon en stockage local
-  if(!localStorage.getItem((pokemons))){
+  if(!localStorage.getItem('pokemons')){
     localStorage.setItem('pokemons', JSON.stringify(pokemons));
   }
   // puis utiliser les pokemons stockés en local pour les composants card
-  const storedPokemons = JSON.parse(localStorage.getItem('pokemons'));
+  let storedPokemons = JSON.parse(localStorage.getItem('pokemons'));
+  function updateStorage(currentList){
+    localStorage.setItem('pokemons', JSON.stringify(currentList));
+    storedPokemons = localStorage.getItem('pokemons')
+  }
   return (
     <div className="App">
+      <AddForm localStorage={localStorage} updateStorage={updateStorage}>
+      </AddForm>
       {storedPokemons.map(pkmn => <PokeCard
         id={pkmn.id}
         name={pkmn.name}
@@ -21,7 +28,6 @@ function App() {
         created={pkmn.created}
         key={pkmn.id}
       ></PokeCard>)}
-      
     </div>
   );
 }
