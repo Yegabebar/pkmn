@@ -1,11 +1,15 @@
 import './App.css';
 import { PokeCard } from './components/PokeCard/PokeCard.js';
 import { AddForm } from './components/AddForm/AddForm.js';
-import { pokemons } from './data/pokemons.js';
+//import { pokemons } from './data/pokemons.js';
+import { useSelector } from 'react-redux';
 
 function App() {
   // Si pas d'objet pokemons en stockage, sauvegarder les pokemon en stockage local
+  const pokemons = useSelector(state => state.pokemons);
   if(!localStorage.getItem('pokemons')){
+    //localStorage.setItem('pokemons', JSON.stringify(pokemons));
+
     localStorage.setItem('pokemons', JSON.stringify(pokemons));
   }
   // puis utiliser les pokemons stockés en local pour les composants card
