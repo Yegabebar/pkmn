@@ -3,7 +3,7 @@ import './PokeCard.css';
 
 export function PokeCard(props){
   return <div className="PokeCard">
-    <div class='desc'>
+    <div className='desc'>
       <div>ID: {props.id}</div>
       <div>Name: {props.name}</div>
       <div>HP: {props.hp}</div>

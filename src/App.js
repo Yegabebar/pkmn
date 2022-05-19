@@ -6,21 +6,22 @@ import { useSelector } from 'react-redux';
 
 function App() {
   // Si pas d'objet pokemons en stockage, sauvegarder les pokemon en stockage local
-  const pokemons = useSelector(state => state.pokemons);
-  if(!localStorage.getItem('pokemons')){
+  const storedPokemons = useSelector(state => state.pkmnReducer);
+  console.log('EHEH',storedPokemons.pkmnReducer);
+  /* if(!localStorage.getItem('pokemons')){
     //localStorage.setItem('pokemons', JSON.stringify(pokemons));
 
     localStorage.setItem('pokemons', JSON.stringify(pokemons));
-  }
+  } */
   // puis utiliser les pokemons stockés en local pour les composants card
-  let storedPokemons = JSON.parse(localStorage.getItem('pokemons'));
-  function updateStorage(currentList){
+  //let storedPokemons = JSON.parse(localStorage.getItem('pokemons'));
+  /* function updateStorage(currentList){
     localStorage.setItem('pokemons', JSON.stringify(currentList));
     storedPokemons = localStorage.getItem('pokemons')
-  }
+  } */
   return (
     <div className="App">
-      <AddForm localStorage={localStorage} updateStorage={updateStorage}>
+      <AddForm /* localStorage={localStorage} *//*  updateStorage={updateStorage} */>
       </AddForm>
       {storedPokemons.map(pkmn => <PokeCard
         id={pkmn.id}

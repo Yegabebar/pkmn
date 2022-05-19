@@ -1,23 +1,28 @@
 // file: visibility/visibilityReducer.ts noEmit
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore, createAction, createReducer } from '@reduxjs/toolkit';
 import { pokemons } from './pokemons';
 
 const initialState = pokemons;
+export const addPkmn = createAction('addPkmn');
+export const remPkmn = createAction('remPkmn');
+export const editPkmn = createAction('editPkmn');
 
-// Action est sous la forme: {type:'ADD', payload: {données}}
-function pkmnReducer(state = initialState, action){
-    switch(action.type) {
-        case 'ADD':
-            return [...state, action.payload];
-        case 'EDIT':
-            return [...state, {}]; //Ecrire du code pour éditer le pkmn d'après son ID
-        case 'REMOVE':
-            return [...state, {}]; //Supprimer l'entrée d'après son id
-        default:
-            return state;
-    }
-}
+const pkmnReducer = createReducer(initialState, (builder) => {
+    builder.addCase(addPkmn, (state, action) =>
+        [...state, action.payload]
+    )
+    .addCase(remPkmn, (state, action) => {
+        state = state.filter(pkmn => pkmn.id !== action.payload.id);
+    })
+    .addCase(editPkmn, (state, action) => {
+        return state.map(pkmn => {
+            return pkmn.id === action.payload.id
+            ? action.payload
+            : pkmn
+        })
+    })
+})
 
-const store = configureStore({ reducer: {pkmnReducer} });
+const store = configureStore({ reducer: {pkmnReducer}, middleware: (getDefaultMiddleware) => getDefaultMiddleware() });
 
 export default store;
