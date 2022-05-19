@@ -2,7 +2,6 @@ import React from "react";
 import Routes from "./components/routes";
 import './App.css';
 import { PokeCard } from './components/PokeCard/PokeCard.js';
-import { AddForm } from './components/AddForm/AddForm.js';
 import { useSelector } from 'react-redux';
 
 const App = () => {

@@ -1,4 +1,4 @@
-import React from "react";
+/* import React from "react";
 import Navigation from "../components/Navigation";
 import { PokeCard } from "../components/PokeCard/PokeCard.js";
 import { pokemons } from "../data/pokemons.js";
@@ -37,3 +37,4 @@ const Pokedex = () => {
 };
 
 export default Pokedex;
+ */
