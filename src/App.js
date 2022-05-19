@@ -1,15 +1,16 @@
+import React from "react";
+import Routes from "./components/routes";
 import './App.css';
 import { PokeCard } from './components/PokeCard/PokeCard.js';
 import { AddForm } from './components/AddForm/AddForm.js';
 import { useSelector } from 'react-redux';
 
-function App() {
+const App = () => {
   const storedPokemons = useSelector(state => state.pkmnReducer.pokemons);
 
   return (
     <div className="App">
-      <AddForm>
-      </AddForm>
+      <Routes />
       {storedPokemons.map(pkmn => <PokeCard
         id={pkmn.id}
         name={pkmn.name}
@@ -23,5 +24,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
