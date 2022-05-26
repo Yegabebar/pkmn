@@ -1,9 +1,9 @@
 // file: visibility/visibilityReducer.ts noEmit
 import { configureStore } from '@reduxjs/toolkit';
-import { pkmnReducer } from '../reducers/pkmnReducer';
+import { PkmnReducer } from '../pokemonSlice';
 
 const store = configureStore({ 
-    reducer: {pkmnReducer}, 
+    reducer: {PkmnReducer}, 
     middleware: (getDefaultMiddleware) => getDefaultMiddleware() 
 });
 

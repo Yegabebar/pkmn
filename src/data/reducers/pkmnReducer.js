@@ -1,12 +1,11 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { fetchPokemons } from '../stores/store'
 import { addPkmn, remPkmn, editPkmn } from '../actions/pkmnActions';
 
 // remplacer par un call de fonction du fichier store.js
 //const initialState = { pokemons };
-const initialState = fetchPokemons();
+//const initialState = fetchPokemons();
 
-export const pkmnReducer = createReducer(initialState, (builder) => {
+export const pkmnReducer = createReducer({}, (builder) => {
     builder.addCase(addPkmn, (state, action) => {
         console.log('state',state);
         const updatedState = [...state.pokemons, action.payload];

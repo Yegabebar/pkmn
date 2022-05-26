@@ -7,10 +7,10 @@ const Navigation = () => {
     <div className="navbar">
       <img src="/pokeball.jpg" width="50" height="50"></img>
       <div className="links">
-        <NavLink excat to="/" activeClassName="nav-active">
+        <NavLink exact to="/" activeClassName="nav-active">
           Pokedex
         </NavLink>
-        <NavLink excat to="/Edit" activeClassName="nav-active">
+        <NavLink exact to="/Edit" activeClassName="nav-active">
           Edit
         </NavLink>
       </div>
