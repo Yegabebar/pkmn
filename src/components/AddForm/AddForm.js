@@ -1,19 +1,18 @@
-/* import React from "react";
+import React from "react";
 import "./AddForm.css";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addPkmn } from "../../data/actions/pkmnActions";
+import { addPkmn } from "../../data/pokemonSlice";
 
 export function AddForm() {
   const dispatch = useDispatch();
-  const currentList = useSelector((state) => state.pkmnReducer.pokemons);
-  
+  const pkmnListState = useSelector((state) => state.PkmnReducer.pokemons);
   const [name, setName] = useState("");
   const [hp, setHp] = useState("");
   const [types, setTypes] = useState("");
   const [picture, setPicture] = useState("");
-
-
+  const [attack, setAttack] = useState("");
+  const [defense, setDefense] = useState("");
 
   //on check la valeur de types
   //si la valeur est null, on créer une liste vide
@@ -21,7 +20,6 @@ export function AddForm() {
 
   function handleTypes(type) {
     if (!Array.isArray(types)) {
-      console.log("init", types);
       if (type !== "selectionner un type") {
         setTypes([type]);
       }
@@ -35,17 +33,26 @@ export function AddForm() {
   }
 
   function save(e) {
-    //e.preventDefault();
-    const id = Number(currentList.slice(-1)[0].id + 1);
+    // TODO: Adapt this with new pokemon data structure
+    const id = Number(pkmnListState.slice(-1)[0].id + 1);
     const newPkmn = {
       id,
       name,
-      hp,
-      cp,
-      picture,
-      types,
-      created: new Date(),
+      "sprites":{
+        "front_default":picture,
+      },
+      "stats":[
+        {"base_stat":hp,"stat":{"name":"hp"}},
+        {"base_stat":attack,"stat":{"name":"attack"}},
+        {"base_stat":defense,"stat":{"name":"defense"}},
+      ],
+      "types":[
+        {"type":{"name":types[0]}}
+      ]
     };
+    if(types.length>1){
+      newPkmn.types.push({"type":{"name":types[1]}})
+    }
 
     if (Array.isArray(types)) {
       if (types.length >= 1) {
@@ -66,17 +73,24 @@ export function AddForm() {
       <input
         type={"text"}
         placeholder="Name"
+        required="required"
         onChange={(e) => setName(e.target.value)}
       />
       <input
         type={"text"}
         placeholder="HP"
+        required="required"
         onChange={(e) => setHp(e.target.value)}
       />
       <input
         type={"text"}
-        placeholder="CP"
-        onChange={(e) => setCp(e.target.value)}
+        placeholder="Attack"
+        onChange={(e) => setAttack(e.target.value)}
+      />
+      <input
+        type={"text"}
+        placeholder="Defense"
+        onChange={(e) => setDefense(e.target.value)}
       />
       <input
         type={"text"}
@@ -103,4 +117,3 @@ export function AddForm() {
     </div>
   );
 }
- */

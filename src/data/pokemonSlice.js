@@ -25,6 +25,7 @@ const PokemonSlice = createSlice({
   initialState: initialState,
   reducers: {
     addPkmn(state, {payload}){
+      console.log('got new stuff to save')
       const updatedState = [...state.pokemons, payload];
       updateStateAndLocStor(state, updatedState);
     },
