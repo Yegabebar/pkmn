@@ -10,17 +10,17 @@ import { nanoid } from "nanoid";
 const Pokedex = () => {
   const dispatch = useDispatch();
   const pokemons = useSelector(state => state.PkmnReducer.pokemons);
+
   useEffect(() => {
     getPokemonList(dispatch);
   }, [dispatch])
-
   return (
     <div className="Pokedex">
       <Navigation />
       <div className="PokedexBase">
         {pokemons.map((pkmn) => (
           <PokeCard
-            pkmn={pkmn}
+            pkmn={JSON.stringify(pkmn)}
             key={nanoid()}
           ></PokeCard>
         ))}

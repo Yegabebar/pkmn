@@ -1,19 +1,19 @@
-import React from "react";
+/* import React from "react";
 import "./AddForm.css";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addPkmn } from "../../data/actions/pkmnActions";
 
 export function AddForm() {
-  const [name, setName] = useState("");
-  const [hp, setHp] = useState("");
-  const [cp, setCp] = useState("");
-  const [types, setTypes] = useState("");
-  const [picture, setPicture] = useState("");
-  console.log("data", name, hp, cp, types);
-
   const dispatch = useDispatch();
   const currentList = useSelector((state) => state.pkmnReducer.pokemons);
+  
+  const [name, setName] = useState("");
+  const [hp, setHp] = useState("");
+  const [types, setTypes] = useState("");
+  const [picture, setPicture] = useState("");
+
+
 
   //on check la valeur de types
   //si la valeur est null, on créer une liste vide
@@ -103,3 +103,4 @@ export function AddForm() {
     </div>
   );
 }
+ */

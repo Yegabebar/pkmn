@@ -1,9 +1,10 @@
 import React from "react";
 import "./PokeCard.css";
+import { nanoid } from "nanoid";
 
 export function PokeCard(props) {
-  const pkmn = props.pkmn;
-  console.log('component got',pkmn)
+  const pkmn = JSON.parse(props.pkmn);
+
   return (
     <div className="PokeCard">
       <div className="desc">
@@ -16,7 +17,7 @@ export function PokeCard(props) {
           Types:
           <ul>
             {pkmn.types.map((type) => (
-              <li key={type}>{type}</li>
+              <li key={nanoid()}>{type.type.name}</li>
             ))}
           </ul>
         </div>
